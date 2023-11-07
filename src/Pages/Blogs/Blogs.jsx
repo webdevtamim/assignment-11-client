@@ -1,6 +1,6 @@
 const Blogs = () => {
     return (
-        <div className="max-w-[1000px] mx-auto py-28">
+        <div className="max-w-[1000px] mx-auto py-28 px-5">
             <div className="collapse collapse-arrow bg-[#F03737] mb-7 shadow-lg">
                 <input type="radio" name="my-accordion-2" checked="checked" />
                 <div className="collapse-title text-xl font-medium text-white">
