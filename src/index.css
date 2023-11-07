@@ -11,3 +11,13 @@
  body {
     font-family: 'Overpass', sans-serif;
  }
+
+ .active {
+   background: transparent !important;
+   color: #F03737 !important;
+ }
+
+ #nav-item:active {
+   background: transparent;
+   color: #F03737;
+ }
