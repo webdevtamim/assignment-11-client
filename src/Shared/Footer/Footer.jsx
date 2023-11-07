@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaRegEnvelope } from 'react-icons/fa';
+import { FaFacebookF, FaTwitter, FaYoutube, FaRegEnvelope } from 'react-icons/fa';
 import { LuPhoneCall } from "react-icons/lu";
 import { IoLocationOutline } from "react-icons/io5";
 
@@ -54,11 +54,19 @@ const Footer = () => {
     return (
         <footer className="footer p-10 bg-base-200 text-base-content">
             <div>
-                
+                <div className="flex items-center">
+                    <img className="w-14" src="icon.png" alt="" />
+                    <span>My Job Gator</span>
+                </div>
                 <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                <div>
+                    <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer"><FaFacebookF></FaFacebookF></a>
+                    <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><FaTwitter></FaTwitter></a>
+                    <a href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer"><FaYoutube></FaYoutube></a>
+                </div>
             </div>
             <div>
-                <h4 className="footer-title">Quick Links</h4>
+                <h4 className="footer-title">QUICK LINKS</h4>
                 <ul>
                     {
                         quickLinks.map((quickLink, index) => (
@@ -70,7 +78,7 @@ const Footer = () => {
                 </ul>
             </div>
             <div>
-                <h4 className="footer-title">Contac Info</h4>
+                <h4 className="footer-title">CONTACT INFO</h4>
                 <ul>
                     {
                         contactsInfo.map((contactInfo, index) => (
@@ -81,6 +89,17 @@ const Footer = () => {
                         ))
                     }
                 </ul>
+            </div>
+            <div>
+                <h2 className="footer-title">SUBSCRIBE</h2>
+                <form>
+                    <div className="form-control">
+                        <div className="input-group">
+                            <input type="text" placeholder="Search…" className="input input-bordered" />
+                            <button className="btn btn-square">Subscribe</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </footer>
     );
