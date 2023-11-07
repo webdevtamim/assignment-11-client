@@ -34,6 +34,7 @@ const Register = () => {
                         <span className="text-[#F03737] md:text-5xl text-4xl font-semibold">JOB GATOR</span>
                         <span className="md:text-5xl text-4xl font-semibold text-[#474747]">REGISTER</span>
                     </div>
+                    <p className="text-base text-[#474747] tracking-widest md:max-w-[50%]">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
                 <div className="p-10 border rounded-lg md:max-w-[70%] mx-auto shadow-xl">
                     <form>
