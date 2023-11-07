@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+   background: #fff;
+}
+
  body {
     font-family: 'Overpass', sans-serif;
  }
