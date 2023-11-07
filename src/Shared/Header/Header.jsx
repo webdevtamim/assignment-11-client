@@ -12,7 +12,7 @@ const Header = () => {
     </>
 
     return (
-        <div className="shadow-md">
+        <div className="shadow-md sticky top-0 z-50 bg-white">
             <div className="navbar max-w-[1400px] mx-auto px-5 py-3">
                 <div className="navbar-start">
                     <div className="dropdown">
