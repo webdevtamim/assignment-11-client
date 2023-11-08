@@ -33,7 +33,7 @@ const AllJobs = () => {
                                 <td>{job.deadline.slice(0,10)}</td>
                                 <td>{job.salary}</td>
                                 <td>
-                                    <Link to={'/details/'+job._id} className="bg-[#F03737] md:px-5 md:py-2 py-1 px-3 rounded-md text-white hover:bg-transparent hover:text-[#F03737]">view</Link>
+                                    <Link to={'/job/'+job._id} className="bg-[#F03737] md:px-5 md:py-2 py-1 px-3 rounded-md text-white hover:bg-transparent hover:text-[#F03737]">view</Link>
                                 </td>
                             </tr>)
                         }
