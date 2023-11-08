@@ -51,7 +51,7 @@ const Blogs = () => {
                     Explanation of my code
                 </div>
                 <div className="collapse-content bg-white pt-4 text-[#222] font-medium">
-                    <p>hello</p>
+                    <p>My code appears to be a React-based full stack for a job listing and application management system. It interacts with a backend server for data storage and retrieval.</p>
                 </div>
             </div>
         </div>
