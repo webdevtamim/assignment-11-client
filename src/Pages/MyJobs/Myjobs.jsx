@@ -1,18 +1,50 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from 'sweetalert2';
 
 const Myjobs = () => {
+    const loaderJobs = useLoaderData()
     const { user } = useContext(AuthContext);
-    const [jobs, setJobs] = useState([]);
+    const [jobs, setJobs] = useState(loaderJobs);
 
     const myJobs = jobs.filter(data => data.email === user.email);
 
-    useEffect(() => {
-        fetch('http://localhost:5000/jobs')
-            .then(res => res.json())
-            .then(data => setJobs(data))
-    }, [])
+    const handleDelete = id => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+                fetch(`http://localhost:5000/jobs/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            const remainingJob = jobs.filter(job => job._id !== id);
+                            setJobs(remainingJob)
+                        }
+                    })
+            }
+        })
+    }
+
+    // useEffect(() => {
+    //     fetch('')
+    //         .then(res => res.json())
+    //         .then(data => setJobs(data))
+    // }, [])
 
     return (
         <div className="py-20 px-5">
@@ -37,7 +69,7 @@ const Myjobs = () => {
                                     <Link to={'/update/' + job._id} className="bg-[#F03737] md:px-5 md:py-2 py-1 px-3 rounded-md text-white hover:bg-transparent hover:text-[#F03737]">Update</Link>
                                 </td>
                                 <td>
-                                    <button className="bg-[#F03737] md:px-5 md:py-2 py-1 px-3 rounded-md text-white hover:bg-transparent hover:text-[#F03737]">Delete</button>
+                                    <button onClick={() => handleDelete(job._id)} className="bg-[#F03737] md:px-5 md:py-2 py-1 px-3 rounded-md text-white hover:bg-transparent hover:text-[#F03737]">Delete</button>
                                 </td>
                             </tr>)
                         }
