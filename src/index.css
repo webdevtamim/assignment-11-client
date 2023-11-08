@@ -8,16 +8,20 @@
    background: #fff;
 }
 
- body {
+body {
     font-family: 'Overpass', sans-serif;
- }
+}
 
- .active {
+.active {
    background: transparent !important;
    color: #F03737 !important;
- }
+}
 
- #nav-item:active {
+#nav-item:active {
    background: transparent;
    color: #F03737;
- }
+}
+
+.react-datepicker-wrapper {
+  display: block !important;
+}
