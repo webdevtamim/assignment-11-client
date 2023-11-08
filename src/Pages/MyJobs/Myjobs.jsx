@@ -26,7 +26,7 @@ const Myjobs = () => {
                     'Your file has been deleted.',
                     'success'
                 )
-                fetch(`http://localhost:5000/jobs/${id}`, {
+                fetch(`https://job-seeking-server-seven.vercel.app/jobs/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

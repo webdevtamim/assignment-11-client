@@ -8,7 +8,7 @@ const AppliedJobs = () => {
     const appliedJob = jobs.filter(data => data.applierEmail === user.email);
 
     useEffect(() => {
-        fetch('http://localhost:5000/appliedJobs')
+        fetch('https://job-seeking-server-seven.vercel.app/appliedJobs')
             .then(res => res.json())
             .then(data => setJobs(data))
     }, [])
