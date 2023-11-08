@@ -19,14 +19,15 @@ const AddJob = () => {
         event.preventDefault();
         const form = event.target;
         const photo = form.photo.value;
+        const job = form.job.value;
         const name = form.name.value;
-        const email = form.email.value;
         const salary = form.salary.value;
         const applicants = form.applicants.value;
         const description = form.description.value;
-        console.log(photo, name, email, salary, selectedCate, startDate, deadline, applicants, description);
+        const email = user.email;
+        console.log(photo, job, name, salary, selectedCate, startDate, deadline, applicants, description, email);
 
-        const jobsObj = { photo, name, email, salary, selectedCate, startDate, deadline, applicants, description }
+        const jobsObj = { photo, job, name, salary, selectedCate, startDate, deadline, applicants, description, email }
 
         fetch('http://localhost:5000/jobs', {
             method: 'POST',
@@ -66,12 +67,12 @@ const AddJob = () => {
                                 <input className="mt-2 mb-6 w-full bg-white rounded border outline-none font-semibold border-[#474747] text-[#474747] tracking-widest text-xs py-3 px-4" type="url" name="photo" id="photo" placeholder="Job Banner URL" required />
                             </div>
                             <div>
-                                <label className="text-sm text-[#474747] tracking-widest font-bold" htmlFor="name">Job Title</label><br />
-                                <input className="mt-2 mb-6 w-full bg-white rounded border outline-none font-semibold border-[#474747] text-[#474747] tracking-widest text-xs py-3 px-4" type="text" name="name" id="name" placeholder="Job Title" required />
+                                <label className="text-sm text-[#474747] tracking-widest font-bold" htmlFor="job">Job</label><br />
+                                <input className="mt-2 mb-6 w-full bg-white rounded border outline-none font-semibold border-[#474747] text-[#474747] tracking-widest text-xs py-3 px-4" type="text" name="job" id="job" placeholder="Job" required />
                             </div>
                             <div>
-                                <label className="text-sm text-[#474747] tracking-widest font-bold">User Email</label><br />
-                                <input className="mt-2 mb-6 w-full bg-white rounded border outline-none font-semibold border-[#474747] text-[#474747] tracking-widest text-xs py-3 px-4" type="email" name="email" value={user.email} readOnly />
+                                <label className="text-sm text-[#474747] tracking-widest font-bold">User Name</label><br />
+                                <input className="mt-2 mb-6 w-full bg-white rounded border outline-none font-semibold border-[#474747] text-[#474747] tracking-widest text-xs py-3 px-4" type="name" name="name" defaultValue={user.displayName} required />
                             </div>
                             <div>
                                 <label className="text-sm text-[#474747] tracking-widest font-bold" htmlFor="salary">Salary Range</label><br />
