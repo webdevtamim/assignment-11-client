@@ -33,7 +33,7 @@ const Update = () => {
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                if (data.insertedId) {
+                if (data.modifiedCount) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'Product updated successfully',

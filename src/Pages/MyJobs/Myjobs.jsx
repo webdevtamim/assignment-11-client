@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2';
@@ -39,12 +39,6 @@ const Myjobs = () => {
             }
         })
     }
-
-    // useEffect(() => {
-    //     fetch('')
-    //         .then(res => res.json())
-    //         .then(data => setJobs(data))
-    // }, [])
 
     return (
         <div className="py-20 px-5">
