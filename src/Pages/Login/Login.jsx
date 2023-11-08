@@ -1,12 +1,41 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginIMG from '../../assets/login.png';
 import { FcGoogle } from 'react-icons/fc';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../../firebase/firebase.config";
+
+const auth = getAuth(app);
 
 const Login = () => {
-    const { logIn, handleGoogleLogin } = useContext(AuthContext)
+    const { logIn } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, provider)
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'User login successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: `${error.code}`,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            })
+    }
 
     const handleLogin = event => {
         event.preventDefault();
@@ -22,7 +51,7 @@ const Login = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
-                // navigate(location?.state ? location.state : '/');
+                navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
                 Swal.fire({

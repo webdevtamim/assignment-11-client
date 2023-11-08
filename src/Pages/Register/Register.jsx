@@ -1,11 +1,40 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from 'react-icons/fc';
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import app from "../../firebase/firebase.config";
+
+const auth = getAuth(app);
 
 const Register = () => {
-    const { createUser, handleGoogleLogin } = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext);
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, provider)
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'User login successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+                navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: `${error.code}`,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            })
+    }
 
     const handleRegister = event => {
         event.preventDefault();
@@ -23,7 +52,7 @@ const Register = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
-                // navigate(location?.state ? location.state : '/');
+                navigate(location?.state ? location.state : '/');
             })
             .catch(error => {
                 console.log(error);
