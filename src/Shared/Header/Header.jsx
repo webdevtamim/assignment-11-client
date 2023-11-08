@@ -16,9 +16,15 @@ const Header = () => {
     const navItems = <>
         <li><NavLink to={'/'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">Home</NavLink></li>
         <li><NavLink to={'/alljobs'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">All Jobs</NavLink></li>
-        <li><NavLink to={'/appliedjobs'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">Applied Jobs</NavLink></li>
-        <li><NavLink to={'/addjob'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">Add a Job</NavLink></li>
-        <li><NavLink to={'/myjobs'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">My Jobs</NavLink></li>
+        {
+            user && <li><NavLink to={'/appliedjobs'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">Applied Jobs</NavLink></li>
+        }
+        {
+            user && <li><NavLink to={'/addjob'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">Add a Job</NavLink></li>
+        }
+        {
+            user && <li><NavLink to={'/myjobs'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">My Jobs</NavLink></li>
+        }
         <li><NavLink to={'/blogs'} id="nav-item" className="hover:bg-transparent hover:text-[#F03737] duration-300">Blogs</NavLink></li>
     </>
 
@@ -72,7 +78,7 @@ const Header = () => {
                                 </ul>
                             </div>
                         ) : (
-                            <Link to={'/register'} className="px-4 py-2 rounded-md lg:py-3 lg:px-5 bg-[#F03737] border-2 border-transparent text-white hover:bg-transparent hover:border-2 hover:border-[#F03737] hover:text-[#F03737] lg:font-extrabold font-medium duration-500 lg:text-sm text-xs">Register</Link>
+                            <Link to={'/login'} className="px-4 py-2 rounded-md lg:py-3 lg:px-5 bg-[#F03737] border-2 border-transparent text-white hover:bg-transparent hover:border-2 hover:border-[#F03737] hover:text-[#F03737] lg:font-extrabold font-medium duration-500 lg:text-sm text-xs">Login</Link>
                         )
                     }
                 </div>
