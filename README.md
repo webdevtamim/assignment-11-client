@@ -1,8 +1,21 @@
-# React + Vite
+# Job Seeking
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Website live site link: [https://job-seeking-bf2ee.firebaseapp.com/](https://job-seeking-bf2ee.firebaseapp.com/)
 
-Currently, two official plugins are available:
+## Application Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. **Interactive category jobs Display:**
+   - The application showcases interactive most popular jobs on the homepage, providing information about categories. Users can click on these cards to learn more about each service.
+
+2. **Detailed job Pages:**
+   - Users can access detailed information about each service by clicking on the jobs. The job pages display job descriptions, salary, and other details.
+
+3. **User Authentication:**
+   - The application supports user authentication with email and password. Users can create new accounts and sign in securely.
+
+4. **Google Sign-In:**
+   - For a seamless sign-in experience, users can choose to sign in with their Google accounts. The application leverages Firebase's Google sign-in functionality.
+
+5. **My applied job page:**
+   - The application includes sections for showcasing partners and membership information. Users can explore partner details, and there's a call-to-action to join the membership.
+   - The application includes sections for showcasing partners and membership information. Users can explore partner details, and there's a call-to-action to join the membership.
