@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import { createContext, useEffect, useState } from "react";
 import Swal from 'sweetalert2'
@@ -54,6 +54,29 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, provider)
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'User login successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+                // navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: `${error.code}`,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            })
+    }
+
     const logOut = () => {
         setLoading(true);
         return signOut(auth);
@@ -74,6 +97,7 @@ const AuthProvider = ({ children }) => {
         loading,
         createUser,
         logIn,
+        handleGoogleLogin,
         logOut
     }
 

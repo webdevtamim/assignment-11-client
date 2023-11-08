@@ -6,7 +6,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import Swal from 'sweetalert2'
 
 const Login = () => {
-    const { logIn } = useContext(AuthContext)
+    const { logIn, handleGoogleLogin } = useContext(AuthContext)
 
     const handleLogin = event => {
         event.preventDefault();
@@ -78,7 +78,7 @@ const Login = () => {
                             <div className='border-b-2 w-[45%]'></div>
                         </div>
                         <div className="flex justify-center pt-10">
-                            <button
+                            <button onClick={handleGoogleLogin}
                                 className='text-xl font-medium flex items-center gap-2 border rounded-md py-3 px-6 text-[#212529] border-[#212529] hover:bg-white hover:text-[#F03737] hover:border-[#F03737] active:text-[#F03737] active:border-[#F03737] active:bg-transparent'>
                                 <span>Login with : <FcGoogle className="inline"></FcGoogle></span>
                             </button>
