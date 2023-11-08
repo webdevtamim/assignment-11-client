@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import loginIMG from '../../assets/login.png';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
 
@@ -49,7 +50,7 @@ const Login = () => {
                         <div className="flex justify-center pt-10">
                             <button
                                 className='text-xl font-medium flex items-center gap-2 border rounded-md py-3 px-6 text-[#212529] border-[#212529] hover:bg-white hover:text-[#F03737] hover:border-[#F03737] active:text-[#F03737] active:border-[#F03737] active:bg-transparent'>
-                                <span>Login with : </span>
+                                <span>Login with : <FcGoogle className="inline"></FcGoogle></span>
                             </button>
                         </div>
                         <p className="pt-4 text-[#212529]">New to this website? Please <Link to={'/register'}><span className="hover:underline underline-offset-4 font-bold">Register</span></Link></p>

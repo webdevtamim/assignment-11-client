@@ -1,6 +1,42 @@
 import { Link } from "react-router-dom";
+import { FcGoogle } from 'react-icons/fc';
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from 'sweetalert2'
 
 const Register = () => {
+    const { createUser } = useContext(AuthContext)
+
+    const handleRegister = event => {
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+        const displayName = form.get('text');
+        const photoURL = form.get('url');
+        console.log(email, password, displayName, photoURL);
+
+        createUser(email, password, displayName, photoURL)
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'User created successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+                // navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                console.log(error);
+                Swal.fire({
+                    title: 'Error!',
+                    text: `${error.code}`,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            })
+
+    }
 
     const formDataSheet = [
         {
@@ -37,7 +73,7 @@ const Register = () => {
                     <p className="text-base text-[#474747] tracking-widest md:max-w-[50%]">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
                 </div>
                 <div className="p-10 border rounded-lg md:max-w-[70%] mx-auto shadow-xl">
-                    <form>
+                    <form onSubmit={handleRegister}>
                         {
                             formDataSheet.map(formData => <div key={formData.id}>
                                 <label className="text-sm text-[#474747] tracking-widest font-bold" htmlFor={formData.type}>{formData.placeholder}</label><br />
@@ -55,7 +91,7 @@ const Register = () => {
                     <div className="flex justify-center pt-10">
                         <button
                             className='text-xl font-medium flex items-center gap-2 border rounded-md py-3 px-6 text-[#212529] border-[#212529] hover:bg-white hover:text-[#F03737] hover:border-[#F03737] active:text-[#F03737] active:border-[#F03737] active:bg-transparent'>
-                            <span>Register with : </span>
+                            <span>Register with : <FcGoogle className="inline"></FcGoogle></span>
                         </button>
                     </div>
                     <p className="pt-4 text-[#212529]">All ready have an account? <Link to={'/login'}><span className="hover:underline underline-offset-4 font-bold">Log in</span></Link></p>
