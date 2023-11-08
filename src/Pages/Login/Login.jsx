@@ -1,8 +1,38 @@
 import { Link } from "react-router-dom";
 import loginIMG from '../../assets/login.png';
 import { FcGoogle } from 'react-icons/fc';
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import Swal from 'sweetalert2'
 
 const Login = () => {
+    const { logIn } = useContext(AuthContext)
+
+    const handleLogin = event => {
+        event.preventDefault();
+        const form = new FormData(event.currentTarget);
+        const email = form.get('email');
+        const password = form.get('password');
+
+        logIn(email, password)
+            .then(() => {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'User login successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+                // navigate(location?.state ? location.state : '/');
+            })
+            .catch(error => {
+                Swal.fire({
+                    title: 'Error!',
+                    text: `${error.code}`,
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                })
+            })
+    }
 
     const formDataSheet = [
         {
@@ -32,7 +62,7 @@ const Login = () => {
                 </div>
                 <div>
                     <div className="p-10 border rounded-lg shadow-xl lg:max-w-[70%] md:max-w-[90%] md:mx-auto">
-                        <form>
+                        <form onSubmit={handleLogin}>
                             {
                                 formDataSheet.map(formData => <div key={formData.id}>
                                     <label className="text-sm text-[#474747] tracking-widest font-bold" htmlFor={formData.type}>{formData.placeholder}</label><br />
