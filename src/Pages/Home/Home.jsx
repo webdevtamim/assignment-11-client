@@ -3,8 +3,8 @@ import JobCategory from "../JobCategory/JobCategory";
 const Home = () => {
     return (
         <div>
-            <div className="bg-[url('bg.jpg')] bg-no-repeat bg-cover bg-center -mt-36">
-                <div id="banner-overlay" className="space-y-5 pt-80 lg:pb-36 md:pb-36 pb-20 px-5">
+            <div className="bg-banner-bg bg-no-repeat bg-cover bg-center">
+                <div id="banner-overlay" className="space-y-5 pt-40 lg:pb-36 md:pb-36 pb-20 px-5">
                     <h2 className="text-center lg:text-5xl md:text-4xl text-3xl text-white font-bold">Find the best jobs</h2>
                     <p className="text-center text-xl text-white max-w-[600px] mx-auto">40,000+ Blue Economy jobs in San Diego. Find current openings here and join the Blue Economy.</p>
                     <form className="lg:w-[500px] md:w-[450px] max-w-[400px] mx-auto flex">

@@ -23,7 +23,7 @@ const Update = () => {
         const jobsObj = { banner, photo, job, salary, startDate, deadline, description }
         console.log(jobsObj);
 
-        fetch(`https://job-seeking-server-seven.vercel.app/jobs/${_id}`, {
+        fetch(`http://localhost:5000/jobs/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

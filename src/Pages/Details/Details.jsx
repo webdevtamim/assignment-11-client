@@ -10,9 +10,9 @@ const Details = () => {
 
     const detailsJob = jobs.filter(data => data._id === id);
 
-    const handleAply = ( id, photo, job, email, deadline ) => {
+    const handleAply = ( id, photo, job, email, deadline, selectedCate ) => {
         const applierEmail = user.email;
-        const appliedObj = { id, photo, job, email, deadline, applierEmail };
+        const appliedObj = { id, photo, job, email, deadline, applierEmail, selectedCate };
         console.log(appliedObj);
         if (email === user.email) {
             Swal.fire({
@@ -22,7 +22,7 @@ const Details = () => {
             });
         }
         else {
-            fetch('https://job-seeking-server-seven.vercel.app/appliedJobs', {
+            fetch('http://localhost:5000/appliedJobs', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -58,7 +58,7 @@ const Details = () => {
                         <p className="text-lg font-semibold text-[#474747]">Price: ${job.applicants}</p>
                         <p className='text-[#222]'>{job.description}</p>
                         <div className="card-actions justify-between">
-                            <button onClick={() => handleAply(job._id, job.photo, job.job, job.email, job.deadline)} className='px-10 py-4 text-white text-lg rounded-md font-medium bg-[#F03737]'>Apply</button>
+                            <button onClick={() => handleAply(job._id, job.photo, job.job, job.email, job.deadline, job.selectedCate)} className='px-10 py-4 text-white text-lg rounded-md font-medium bg-[#F03737]'>Apply</button>
                         </div>
                     </div>
                 </div>)

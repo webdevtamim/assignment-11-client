@@ -110,7 +110,7 @@ const Footer = () => {
                 </div>
             </div>
             <div className="max-w-[1400px] mx-auto border-t border-[#4e5e6a] pb-5 pt-7">
-                <p className="text-center text-white">© Copyright Web Dev Ibna. All Rights Reserved.</p>
+                <p className="text-center text-white">© Copyright Web Dev Tamim. All Rights Reserved.</p>
             </div>
         </footer>
     );
